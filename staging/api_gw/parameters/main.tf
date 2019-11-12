@@ -1,5 +1,6 @@
 provider "aws" {
   region  = "us-east-1"
+  version = "~> 2.7"
 }
 
 terraform {
@@ -100,8 +101,8 @@ module "api_gateway_atm_save" {
   api_gateway_authorization                        = "NONE"
   api_gateway_request_parameters                   = {}
   api_gateway_integration_request_parameters       = {}
-  api_gateway_resource_id                          = module.api_path_parameters.api_gateway_resource_parent_id
-  api_gateway_path_part                            = module.api_path_parameters.api_gateway_path
+  api_gateway_resource_id                          = module.api_generate_atm.api_gateway_resource_parent_id
+  api_gateway_path_part                            = module.api_generate_atm.api_gateway_path
 }
 
 module "api_gateway_countries_get" {
@@ -164,8 +165,8 @@ module "api_gateway_currencies" {
   api_gateway_authorization                        = "NONE"
   api_gateway_request_parameters                   = {}
   api_gateway_integration_request_parameters       = {}
-  api_gateway_resource_id                          = module.api_path_parameters.api_gateway_resource_parent_id
-  api_gateway_path_part                            = module.api_path_parameters.api_gateway_path
+  api_gateway_resource_id                          = module.api_generate_currency.api_gateway_resource_parent_id
+  api_gateway_path_part                            = module.api_generate_currency.api_gateway_path
  }
 
 module "api_gateway_deploy_parameters" {
